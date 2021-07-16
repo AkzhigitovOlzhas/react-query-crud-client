@@ -1,5 +1,7 @@
 export const getAllBooks = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_SERVER}books`);
+  const response = await fetch(
+    `https://react-query-crud-server.herokuapp.com/books`
+  );
 
   if (!response.ok) {
     throw new Error("Something went wrong.");
@@ -12,7 +14,7 @@ export const getBook = async ({ queryKey }) => {
   /*eslint-disable no-unused-vars*/
   const [_key, { id }] = queryKey;
   const response = await fetch(
-    `${process.env.REACT_APP_API_SERVER}books/${id}`
+    `https://react-query-crud-server.herokuapp.com/books/${id}`
   );
   if (!response.ok) {
     throw new Error(response.json().message);
@@ -21,13 +23,16 @@ export const getBook = async ({ queryKey }) => {
 };
 
 export const createBook = async (data) => {
-  const response = await fetch(`${process.env.REACT_APP_API_SERVER}books/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    `https://react-query-crud-server.herokuapp.com/books/`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   if (!response.ok) {
     throw new Error(response.json().message);
@@ -38,7 +43,7 @@ export const createBook = async (data) => {
 
 export const updateBook = async ({ id, ...data }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_SERVER}books/${id}`,
+    `https://react-query-crud-server.herokuapp.com/books/${id}`,
     {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -54,7 +59,7 @@ export const updateBook = async ({ id, ...data }) => {
 
 export const removeBook = async (id) => {
   const response = await fetch(
-    `${process.env.REACT_APP_API_SERVER}books/${id}`,
+    `https://react-query-crud-server.herokuapp.com/books/${id}`,
     { method: "DELETE" }
   );
   if (!response.ok) {
