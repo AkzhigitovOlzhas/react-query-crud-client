@@ -4,7 +4,7 @@ import "./index.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { QueryClientProvider, QueryClient } from "react-query";
 import preset from "@rebass/preset";
@@ -15,7 +15,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={preset}>
-        <Router>
+        <Router basename="/">
           <App />
         </Router>
       </ThemeProvider>
